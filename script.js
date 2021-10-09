@@ -38,15 +38,21 @@ const renderHtml = function (country) {
                     </tr>
                     <tr>
                         <td class="font1">Area:</td>
-                        <td>${country.area} sq Kms</td>
+                        <td>${country.area
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sq Kms</td>
                     </tr>
                     <tr>
                         <td class="font1">Population:</td>
-                        <td>${country.population}</td>
+                        <td>${country.population
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                     </tr>
                     <tr>
                         <td class="font1">Currency:</td>
-                        <td>${country.currencies[0].name} (${country.currencies[0].symbol})</td>
+                        <td>${country.currencies[0].name} (${
+    country.currencies[0].symbol
+  })</td>
                     </tr>
 
                     <tr>
@@ -73,3 +79,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
     splash.classList.add("hidden-splash");
   }, 2000);
 });
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+console.log(numberWithCommas(123456789123));
