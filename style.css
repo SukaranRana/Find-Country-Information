@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+.form-control {
+  color: rgb(85, 85, 85) !important;
+  background-color: rgb(247, 247, 247) !important;
+  overflow-x: hidden;
+}
+.form-control {
+  border: none !important;
+}
+
+.searchInput {
+  text-align: center;
+  border-radius: 35px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: rgb(228, 228, 228) 2px solid;
+  width: 25rem;
+  height: 2.5rem;
+}
+button {
+  outline: none;
+  border: none;
+  border: 2px solid grey;
+}
+.font1 {
+  /* color: white; */
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1rem;
+}
+.flag {
+  /* box-sizing: inherit !important; */
+  width: 28rem;
+  height: 14rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2rem 5rem 1rem;
+}
+.info {
+  animation: fadeIn 1s ease-in;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 10;
+  text-align: center;
+  line-height: 95vh;
+}
+.splash.hidden-splash {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: -10;
+  text-align: center;
+  line-height: 95vh;
+  transition: all 1s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in forwards;
+}
+svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+input:-ms-input-placeholder {
+  font-size: smaller;
+}
