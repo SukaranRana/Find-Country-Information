@@ -5,6 +5,10 @@ const searchBtn = document.querySelector(".searchButton");
 
 searchBtn.addEventListener("click", function (e) {
   e.preventDefault();
+  if (input.value == "") {
+    input.placeholder = "Enter a country eg:india";
+    input.style.borderBottom = "2px solid #f0ad4e";
+  }
   const country = input.value;
   input.value = "";
   fetch(`https://restcountries.com/v2/name/${country}?fullText=true`)
@@ -13,12 +17,57 @@ searchBtn.addEventListener("click", function (e) {
       return response.json();
     })
     .then((data) => {
+      if (data.status != 200) {
+        input.style.borderBottom = "solid 2px #d9534f";
+        input.placeholder = "Enter correct country eg:india";
+      }
+      renderCovid(data[0].alpha2Code);
       renderHtml(data[0]);
+      input.style.borderBottom = "solid 2px rgb(228, 228, 228)";
+      input.placeholder = "Search for a country eg:india";
     })
     .catch((err) => console.log(`${err.message}`));
 });
 
+const renderCovid = function (countryCode) {
+  const code = countryCode.toLowerCase();
+  fetch(
+    `https://covid-19-data.p.rapidapi.com/country/code?code=${code}&format=json`,
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+        "x-rapidapi-key": "772acdeb52mshc5fd4623b67ebfcp1092c5jsn4a00c8b1fcf5",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => renderCovidHtml(data[0]))
+    .catch((err) => {
+      console.error(err);
+    });
+};
+const renderCovidHtml = function (covid) {
+  const html = `
+  <div class="offset-lg-1 col-lg-2 text-light bg-dark">Covid Updates</div>
+  <div class="col-lg-2 text-light bg-primary">Confirmed:${covid.confirmed
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+  <div class="col-lg-2 text-light bg-success">Recovered:${covid.recovered
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+  <div class="col-lg-2 text-light bg-warning">Critical:${covid.critical
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+  <div class="col-lg-2 text-light bg-danger">Deaths:${covid.deaths
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+  `;
+  document.querySelector(".coronavirus").insertAdjacentHTML("beforeend", html);
+};
+
 const renderHtml = function (country) {
+  //prettier-ignore
   const html = `
 <div class="container info">
     <div class="row  mt-4 d-flex justify-content-center">
@@ -27,7 +76,7 @@ const renderHtml = function (country) {
         </div>
         <div class="col-lg-5 col-md-7 offset-lg-1 col-sm-12">
             <div class="table-responsive">    
-                <table class="table table-borderless table-sm">
+                <table class="table table-borderless table-hover table-sm">
                     <tr>
                         <td class="font1">Name:</td>
                         <td>${country.name} (${country.nativeName})</td>
@@ -50,9 +99,7 @@ const renderHtml = function (country) {
                     </tr>
                     <tr>
                         <td class="font1">Currency:</td>
-                        <td>${country.currencies[0].name} (${
-    country.currencies[0].symbol
-  })</td>
+                        <td>${country.currencies[0].name} (${country.currencies[0].symbol})</td>
                     </tr>
 
                     <tr>
@@ -67,8 +114,10 @@ const renderHtml = function (country) {
             </div>  
         </div>
     </div>
+    <div class="row coronavirus">
+
+    </div>
 </div>
-<br>
     `;
   document.querySelector(".container").insertAdjacentHTML("afterend", html);
 };
@@ -79,4 +128,3 @@ document.addEventListener("DOMContentLoaded", (e) => {
     splash.classList.add("hidden-splash");
   }, 2000);
 });
-
