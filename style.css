@@ -20,14 +20,10 @@ body,
   border: none;
   outline: none;
   border-bottom: rgb(228, 228, 228) 2px solid;
-  width: 25rem;
-  height: 2.5rem;
+  width: 40rem;
+  height: 4rem;
 }
-button {
-  outline: none;
-  border: none;
-  border: 2px solid grey;
-}
+
 .font1 {
   /* color: white; */
   font-family: "Helvetica", "Arial", sans-serif;
@@ -96,4 +92,15 @@ svg {
 }
 input:-ms-input-placeholder {
   font-size: smaller;
+}
+.searchButton {
+  width: 4rem;
+  outline: none;
+  background-color: #292b2c;
+  border: none;
+  border-radius: 35px;
+}
+.searchButton:hover,
+.searchButton:active {
+  background-color: grey;
 }
