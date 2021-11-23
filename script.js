@@ -126,5 +126,5 @@ const splash = document.querySelector(".splash");
 document.addEventListener("DOMContentLoaded", (e) => {
   setTimeout(() => {
     splash.classList.add("hidden-splash");
-  }, 2000);
+  }, 1200);
 });
