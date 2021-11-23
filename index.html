@@ -107,7 +107,6 @@
         <form class="form">
           <div class="form-control">
             <span class="d-flex justify-content-center">
-              <!-- <label for="">Search country:</label> -->
               <input
                 class="searchInput d-flex justify-content-center"
                 autofocus
@@ -118,26 +117,43 @@
                 aria-label="Click to search"
                 class="offset-1 searchButton"
               >
-                <img
-                  src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/32/000000/external-search-travel-prettycons-lineal-color-prettycons.png"
-                  alt="search country image"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="offset-1 voiceButton"
+                aria-label="Voice search"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-mic-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z" />
+                  <path
+                    d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"
+                  />
+                </svg>
               </button>
             </span>
           </div>
         </form>
       </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js"
-      integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u"
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
   </body>
 </html>
