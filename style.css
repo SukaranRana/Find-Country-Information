@@ -93,7 +93,7 @@ svg {
 input:-ms-input-placeholder {
   font-size: smaller;
 }
-.searchButton {
+.searchButton,.voiceButton  {
   width: 4rem;
   outline: none;
   background-color: #292b2c;
@@ -101,6 +101,8 @@ input:-ms-input-placeholder {
   border-radius: 35px;
 }
 .searchButton:hover,
-.searchButton:active {
+.searchButton:active,
+.voiceButton:hover,
+.voiceButton:active {
   background-color: grey;
 }
