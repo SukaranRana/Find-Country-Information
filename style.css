@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body,
 .form-control {
   color: rgb(85, 85, 85) !important;
@@ -20,8 +21,8 @@ body,
   border: none;
   outline: none;
   border-bottom: rgb(228, 228, 228) 2px solid;
-  width: 40rem;
-  height: 4rem;
+  width: 50rem;
+  height: 3rem;
 }
 
 .font1 {
@@ -84,7 +85,7 @@ body,
 .fade-in {
   animation: fadeIn 2s ease-in forwards;
 }
-svg {
+.globe {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -93,16 +94,10 @@ svg {
 input:-ms-input-placeholder {
   font-size: smaller;
 }
-.searchButton,.voiceButton  {
-  width: 4rem;
+.searchButton,
+.voiceButton {
   outline: none;
-  background-color: #292b2c;
   border: none;
-  border-radius: 35px;
-}
-.searchButton:hover,
-.searchButton:active,
-.voiceButton:hover,
-.voiceButton:active {
-  background-color: grey;
+  background-color: inherit;
+  cursor: pointer;
 }
