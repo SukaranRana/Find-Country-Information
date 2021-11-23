@@ -2,14 +2,13 @@
 
 const input = document.querySelector(".searchInput");
 const searchBtn = document.querySelector(".searchButton");
+const voiceBtn = document.querySelector(".voiceButton");
 
-searchBtn.addEventListener("click", function (e) {
-  e.preventDefault();
+const renderCountry = (country) => {
   if (input.value == "") {
     input.placeholder = "Enter a country eg:india";
     input.style.borderBottom = "2px solid #f0ad4e";
   }
-  const country = input.value;
   input.value = "";
   fetch(`https://restcountries.com/v2/name/${country}?fullText=true`)
     .then((response) => {
@@ -27,6 +26,12 @@ searchBtn.addEventListener("click", function (e) {
       input.placeholder = "Search for a country eg:india";
     })
     .catch((err) => console.log(`${err.message}`));
+};
+
+searchBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  const country = input.value;
+  renderCountry(country);
 });
 
 const renderCovid = function (countryCode) {
@@ -128,3 +133,30 @@ document.addEventListener("DOMContentLoaded", (e) => {
     splash.classList.add("hidden-splash");
   }, 1200);
 });
+
+voiceBtn.addEventListener("click", runSpeechRecognition);
+
+function runSpeechRecognition() {
+  var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+  var recognition = new SpeechRecognition();
+
+  recognition.onstart = function () {
+    input.style.borderBottom = "solid 2px #4CAF50";
+    input.placeholder = "Listening...";
+  };
+
+  recognition.onspeechend = function () {
+    input.style.borderBottom = "solid 2px rgb(228, 228, 228)";
+    input.placeholder = "Search for a country eg:india";
+    recognition.stop();
+  };
+
+  // This runs when the speech recognition service returns result
+  recognition.onresult = function (event) {
+    var transcript = event.results[0][0].transcript;
+    renderCountry(transcript);
+  };
+
+  // start recognition
+  recognition.start();
+}
